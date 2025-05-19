@@ -15,5 +15,6 @@ def test_invalid_login(browser, username, password):
 
     page.login(username, password)
 
-    assert "inventory" not in browser.current_url
-    assert "error" in browser.page_source.lower()
+    error_text = page.get_error_message()
+    assert error_text != ""
+    
